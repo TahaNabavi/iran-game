@@ -1,0 +1,213 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model setting {
+  id Int @id @default(autoincrement())
+
+  add_price_market Float
+}
+
+model users {
+  id          Int     @id @default(autoincrement())
+  username    String  @unique
+  email       String  @unique
+  password    String
+  avatar      String
+  number      String? @unique
+  wallet      String  @default("0")
+  verified    Boolean @default(false)
+  rank        Int     @default(0)
+  exp         String  @default("0")
+  verify_data String?
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  cart cart[]
+}
+
+model cart {
+  id          Int     @id @default(autoincrement())
+  user        users   @relation(fields: [user_id], references: [id])
+  user_id     Int
+  // * 0 => pardakht nashode
+  // * 1 => pardakht shode
+  // * 2 => anjam shode
+  status      Int     @default(0)
+  type        String
+  username    String?
+  password    String?
+  email       String?
+  acc_id      String?
+  acc_name    String?
+  trade_link  String?
+  backup_code String?
+
+  dlc    games_dlc? @relation(fields: [dlc_id], references: [id])
+  dlc_id Int?
+
+  game    games? @relation(fields: [game_id], references: [id])
+  game_id Int?
+
+  market    market? @relation(fields: [market_id], references: [id])
+  market_id Int?
+
+  inapp_price    inapp_prices? @relation(fields: [inapp_price_id], references: [id])
+  inapp_price_id Int?
+
+  price    item_prices? @relation(fields: [price_id], references: [id])
+  price_id Int?
+}
+
+model price_types {
+  id                Int    @id @default(autoincrement())
+  name              String
+  currency          String @unique
+  currency_code     Int    @unique
+  country_code      String @unique
+  image             String
+  to_irr            Float
+  added_price_inapp Float  @default(0)
+  added_price_games Float  @default(0)
+
+  item_prices  item_prices[]
+  inapp_prices inapp_prices[]
+  market       market[]
+}
+
+model item_prices {
+  id         Int         @id @default(autoincrement())
+  price_type price_types @relation(fields: [pt_id], references: [id])
+  pt_id      Int
+  amount     Float
+
+  games   games[]     @relation("GamePrices")
+  gameDlc games_dlc[] @relation("GameDlcPrices")
+  cart    cart[]
+}
+
+model game_tags {
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
+  games games[] @relation("GameTags")
+}
+
+model games {
+  id               Int           @id @default(autoincrement())
+  tags             game_tags[]   @relation("GameTags")
+  prices           item_prices[] @relation("GamePrices")
+  app_id           Int           @unique
+  title            String        @unique
+  logo             String
+  description      String        @db.Text
+  pc_minimum       String        @db.Text
+  pc_recommended   String        @db.Text
+  metacritic_score Int
+  metacritic_url   String
+  help             String        @db.LongText
+  help_title       String
+  bg               String
+  discount         Int           @default(0)
+  purch            Int           @default(0)
+  image_one        String
+  image_two        String
+  image_three      String
+  isTop            Int           @default(0)
+  link             String
+  about_game       String        @default("") @db.Text
+
+  cart      cart[]
+  games_dlc games_dlc[] @relation(name: "gamesTogames_dlc")
+  market    market[]
+}
+
+model game_tips {
+  id    Int    @id @default(autoincrement())
+  title String
+  body  String @db.LongText
+}
+
+model dlc_tips {
+  id   Int    @default(1)
+  text String @unique
+}
+
+model games_dlc {
+  id       Int           @id @default(autoincrement())
+  prices   item_prices[] @relation("GameDlcPrices")
+  name     String
+  image    String
+  discount Int           @default(0)
+  game     games[]       @relation(name: "gamesTogames_dlc")
+
+  cart cart[]
+}
+
+model inapp {
+  id              Int     @id @default(autoincrement())
+  title           String  @unique
+  logo            String
+  bg              String
+  pin             Boolean @default(false)
+  buy_help_title  String  @default("")
+  buy_help_body   String  @default("") @db.Text
+  buy_username    Boolean @default(true)
+  buy_password    Boolean @default(true)
+  buy_id          Boolean @default(false)
+  buy_name        Boolean @default(false)
+  buy_email       Boolean @default(false)
+  buy_backup_code Boolean @default(false)
+
+  inapp_item inapp_item[]
+}
+
+model inapp_item {
+  id       Int    @id @default(autoincrement())
+  inapp    inapp  @relation(fields: [inapp_id], references: [id])
+  inapp_id Int
+  title    String @default("")
+  logo     String
+
+  inapp_prices inapp_prices[]
+}
+
+model inapp_prices {
+  id            Int        @id @default(autoincrement())
+  inapp_item    inapp_item @relation(fields: [inapp_item_id], references: [id])
+  inapp_item_id Int
+
+  title  String
+  amount Float
+
+  price_type price_types @relation(fields: [pt_id], references: [id])
+  pt_id      Int
+
+  cart cart[]
+}
+
+model market {
+  id      Int     @id @default(autoincrement())
+  game    games?  @relation(fields: [game_id], references: [id])
+  game_id Int?
+  title   String  @unique
+  logo    String  @db.Text
+  pin     Boolean @default(false)
+  app_id Int
+
+  amount Float
+
+  price_type price_types @relation(fields: [pt_id], references: [id])
+  pt_id      Int
+  cart       cart[]
+}
+
+model market_help {
+  id   Int    @id @default(autoincrement())
+  body String @db.Text
+}
