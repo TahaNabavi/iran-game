@@ -2,7 +2,6 @@
 const nextConfig = {
   images: {
     unoptimized: true,
-    // domains: ["*","lh3.googleusercontent.com", "shared.akamai.steamstatic.com","community.akamai.steamstatic.com"],
   },
   typescript:{
     ignoreBuildErrors:true,

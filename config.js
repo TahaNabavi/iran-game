@@ -21,4 +21,4 @@ export const marketSearchPlaceHolders = [
     "Cyberpunk 2077",
     "Assassin's Creed Valhalla"
 ]
-export const GOOGLE_CLIENT_ID = "715915413996-1d9gbhsdijols58bl3ifjlktfgelfrlf.apps.googleusercontent.com"
+export const GOOGLE_CLIENT_ID = ""
