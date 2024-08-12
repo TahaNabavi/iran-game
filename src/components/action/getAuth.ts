@@ -57,7 +57,6 @@ export async function getUserLogedIn(token: string) {
 }
 
 export async function getLogin(email: string, password: string) {
-  hash("12345678").then((e) => console.log(e));
   const user = await prisma.users.findUnique({
     where: {
       email: email,

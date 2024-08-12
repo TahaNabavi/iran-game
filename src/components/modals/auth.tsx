@@ -82,7 +82,6 @@ export default function AuthModal() {
                 profile.getEmail(),
                 googleUser.getAuthResponse().id_token
             ).then((res) => {
-                console.log(res)
                 errorHandler(t, res.status, () => {
                     if (res.status === 200) {
                         CookSet("jwt", res.data);

@@ -171,7 +171,6 @@ export default function page() {
 
   useEffect(() => {
     const key = getParameter("key")?.replaceAll("+", " ")
-    console.log(key)
     const offer = getParameter("offer")
     const tags = getParameter("tags")
     const order = getParameter("pur")

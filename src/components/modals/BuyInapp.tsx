@@ -65,7 +65,6 @@ export default function BuyInapp({
   onClose: () => void;
   onFinish: OnFinish;
 }) {
-  console.log(data)
   const { t } = useTranslation();
 
   const { reloadCart } = useContext(AppContext);

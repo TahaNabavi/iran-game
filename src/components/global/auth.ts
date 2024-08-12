@@ -8,7 +8,6 @@ function lunch() {
     e.close();
   });
   const authDialog = document.querySelector("#auth-modal") as HTMLDialogElement;
-  console.log(authDialog)
   authDialog?.showModal();
   return false;
 }
