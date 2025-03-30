@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import dynamic from "next/dynamic";
 import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "./layout/Sidebar";
 import ContextProvider from "./context/ContextProvider";
 import DLCTips from "@comp-modals/dlcTips";
 import AuthModal from "@comp-modals/auth";
 import WelcomeModal from "@comp-modals/welcome";
-import ThemesProvider from "./themeProvider";
 import Footer from "./layout/Footer";
 import DIR from "@comp-global/dir";
 import { WEBSITE_DIR, WEBSITE_DOMIN, WEBSITE_LANG, WEBSITE_LOCALE } from "conf";
 import { getMainMetaData } from "@comp-action/metadata";
 import { ToastContainer } from "react-toastify";
-import I18nProvider from "./i18n/I18nProvider";
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -76,8 +73,6 @@ export default function RootLayout({
     <html lang={WEBSITE_LANG} dir={WEBSITE_DIR} data-theme="dark">
       <body className="bg-base-300 overflow-x-hidden">
         <ContextProvider>
-          <I18nProvider>
-            <ThemesProvider>
               <ToastContainer
                 position="bottom-center"
                 autoClose={8000}
@@ -112,8 +107,6 @@ export default function RootLayout({
               </main>
 
               <Footer />
-            </ThemesProvider>
-          </I18nProvider>
         </ContextProvider>
       </body>
     </html>
