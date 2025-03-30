@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -117,7 +117,7 @@ model games {
   pc_recommended   String        @db.Text
   metacritic_score Int
   metacritic_url   String
-  help             String        @db.LongText
+  help             String        @db.Text
   help_title       String
   bg               String
   discount         Int           @default(0)
@@ -137,7 +137,7 @@ model games {
 model game_tips {
   id    Int    @id @default(autoincrement())
   title String
-  body  String @db.LongText
+  body  String @db.Text
 }
 
 model dlc_tips {
