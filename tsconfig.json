@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,15 +22,39 @@
       }
     ],
     "paths": {
-      "conf": ["./config.js"],
-      "@prisma": ["./src/components/global/prisma.ts"],
-      "@comp-modals/*": ["./src/components/modals/*"],
-      "@comp-ui/*": ["./src/components/ui/*"],
-      "@comp-action/*": ["./src/components/action/*"],
-      "@comp-global/*": ["./src/components/global/*"],
-      "@/*": ["./src/*"]
-    }
+      "conf": [
+        "./config.js"
+      ],
+      "@prisma": [
+        "./src/components/global/prisma.ts"
+      ],
+      "@comp-modals/*": [
+        "./src/components/modals/*"
+      ],
+      "@comp-ui/*": [
+        "./src/components/ui/*"
+      ],
+      "@comp-action/*": [
+        "./src/components/action/*"
+      ],
+      "@comp-global/*": [
+        "./src/components/global/*"
+      ],
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "t1.jsx", "t.jsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "t1.jsx",
+    "t.jsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

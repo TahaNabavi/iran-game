@@ -13,10 +13,8 @@ import DIR from "@comp-global/dir";
 import { WEBSITE_DIR, WEBSITE_DOMIN, WEBSITE_LANG, WEBSITE_LOCALE } from "conf";
 import { getMainMetaData } from "@comp-action/metadata";
 import { ToastContainer } from "react-toastify";
+import I18nProvider from "./i18n/I18nProvider";
 
-const I18nProvider = dynamic(() => import("./i18n/I18nProvider"), {
-  ssr: false,
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = await getMainMetaData();
