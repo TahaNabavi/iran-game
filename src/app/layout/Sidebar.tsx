@@ -19,7 +19,7 @@ import {
   IconHome,
   IconShoppingBag,
 } from "@tabler/icons-react";
-import { AppContext } from "./context/MyContext";
+import { AppContext } from "../context/MyContext";
 
 type Data = {
   username: string;

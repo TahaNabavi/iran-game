@@ -19,6 +19,11 @@
     ],
     "paths": {
       "conf": ["./config.js"],
+      "@prisma": ["./src/components/global/prisma.ts"],
+      "@comp-modals/*": ["./src/components/modals/*"],
+      "@comp-ui/*": ["./src/components/ui/*"],
+      "@comp-action/*": ["./src/components/action/*"],
+      "@comp-global/*": ["./src/components/global/*"],
       "@/*": ["./src/*"]
     }
   },

@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { CSSProperties, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import priceFormat from "../global/priceFormat";
+import priceFormat from "@comp-global/priceFormat";
+import DIR from "@comp-global/dir";
 
 type Data = {
     title: string,
@@ -70,19 +71,7 @@ export default function MainSlider({ insertData }: { insertData: Data[] }) {
     return (
         <>
             <div className="slider flex flex-col lg:flex-row">
-                <div className="mainImg lg:h-full lg:w-4/6 mb-2 lg:mb-0 w-full sm:h-96 h-72 rounded-xl overflow-hidden relative ">
-                    <div className="absolute top-2 left-2 flex z-20">
-                        {data[show]?.tags && data[show].tags.map((e, i) =>
-                            <button key={`ts-g-${i}`} onClick={() => tagHandler(e)} className="hover:tracking-widest transition-all pb-1 pt-1 px-3 text-white rounded-xl bg-white bg-opacity-10 backdrop-blur-sm me-1 text-sm lowercase font-bold tracking-wider" style={{ fontVariant: "small-caps" } as CSSProperties}>
-                                {t(e)}
-                            </button>
-                        )}
-                    </div>
-                    <Image src={data[show]?.image_one} alt="" className="h-full w-full absolute" fill />
-                    <Image src={data[show]?.image_two} alt="" className="h-full w-full absolute opacity-0 z-10 transition ease-out delay-300" fill id={`slider-img-${show}-2`} />
-                    <Image src={data[show]?.image_three} alt="" className="h-full w-full absolute opacity-0 z-10 transition ease-out delay-300" fill id={`slider-img-${show}-1`} />
-                </div>
-                <div className="lg:h-full h-96 md:h-56 lg:w-2/6 w-full lg:ps-2 flex md:flex-row flex-col lg:flex-col">
+                <div className={DIR("lg:pe-2","lg:ps-2","lg:h-full h-96 md:h-56 lg:w-2/6 w-full flex md:flex-row flex-col lg:flex-col")}>
                     <div className="about lg:h-3/5 lg:w-full h-56 w-full md:w-auto  pb-2">
                         <div className=" h-full w-full overflow-hidden rounded-xl relative">
                             <Image src={data[show]?.image_one} alt="" className="h-full w-full absolute top-0 left-0" width="700" height="700" />
@@ -113,7 +102,7 @@ export default function MainSlider({ insertData }: { insertData: Data[] }) {
                                             }
                                         </div>
                                         <div>
-                                            تومان
+                                            {t("Toman")};
                                         </div>
                                     </div>
                                 </div>
@@ -132,6 +121,18 @@ export default function MainSlider({ insertData }: { insertData: Data[] }) {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="mainImg lg:h-full lg:w-4/6 mb-2 lg:mb-0 w-full sm:h-96 h-72 rounded-xl overflow-hidden relative">
+                    <div className="absolute top-2 left-2 flex z-20">
+                        {data[show]?.tags && data[show].tags.map((e, i) =>
+                            <button key={`ts-g-${i}`} onClick={() => tagHandler(e)} className="hover:tracking-widest transition-all pb-1 pt-1 px-3 text-white rounded-xl bg-white bg-opacity-10 backdrop-blur-sm me-1 text-sm lowercase font-bold tracking-wider" style={{ fontVariant: "small-caps" } as CSSProperties}>
+                                {t(e)}
+                            </button>
+                        )}
+                    </div>
+                    <Image src={data[show]?.image_one} alt="" className="h-full w-full absolute" fill />
+                    <Image src={data[show]?.image_two} alt="" className="h-full w-full absolute opacity-0 z-10 transition ease-out delay-300" fill id={`slider-img-${show}-2`} />
+                    <Image src={data[show]?.image_three} alt="" className="h-full w-full absolute opacity-0 z-10 transition ease-out delay-300" fill id={`slider-img-${show}-1`} />
                 </div>
             </div >
             <div className="slidebar mt-3 w-full flex-inset">

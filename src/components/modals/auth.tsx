@@ -112,7 +112,7 @@ export default function AuthModal() {
                     <h1 className="text-2xl mb-3">{t("Login with")}</h1>
                     <button
                         onClick={googleHandler}
-                        className="h-10 flex-inset bg-gradient-to-br relative px-3 group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 text-white rounded-md font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
+                        className="h-10 w-full flex-inset bg-gradient-to-br relative px-3 group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 dark:bg-zinc-800 text-white rounded-md font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
                     >
                         <Image src="/google.png" className="h-5 w-5" alt="" width="50" height="50" />
                         <span className="ms-2 text-lg">{t("Google")}</span>

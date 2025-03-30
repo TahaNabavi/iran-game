@@ -11,6 +11,7 @@ import { getMainGames } from "@/components/action/getGames";
 import GameCard, { FakeGameCard } from "@/components/ui/gameCard";
 import MarketCard from "@/components/ui/marketCard";
 import InappCard from "@/components/ui/inappCard";
+import Title from "@comp-ui/title";
 
 const { gameSearchPlaceHolders } = require("conf");
 
@@ -76,6 +77,7 @@ type Market = {
   };
   id: number;
 };
+
 function Loader() {
   return (
     <div className="w-full row justify-content-center">
@@ -141,9 +143,7 @@ export default function page() {
 
           {data.game.length !== 0 && (
             <div className="my-5">
-              <span className="text-3xl left-shadow ms-4 animated-text-shadow my-2">
-                <div className="sh-item">{t("Games")}</div>
-              </span>
+              <Title text={t("Games")} />
               <div className="flex-inset row">
                 {data.game.map((e, i) => (
                   <GameCard data={e} key={`dawtl-${i}`} />
@@ -163,9 +163,7 @@ export default function page() {
           )}
           {data.inapp.length !== 0 && (
             <div className="my-5">
-              <span className="text-3xl left-shadow ms-4 animated-text-shadow my-2">
-                <div className="sh-item">{t("inapp")}</div>
-              </span>
+              <Title text={t("inapp")} />
               <div className="flex-inset row">
                 {data.inapp.map((e, i) => (
                   <InappCard data={e} key={`dhawl-${i}`} />
@@ -185,9 +183,7 @@ export default function page() {
           )}
           {data.market.length !== 0 && (
             <div className="my-5">
-              <span className="text-3xl left-shadow ms-4 animated-text-shadow my-2">
-                <div className="sh-item">{t("market")}</div>
-              </span>
+              <Title text={t("market")} />
               <div className="flex-inset row">
                 {data.market.map((e, i) => (
                   <MarketCard data={e} key={`dawl-${i}`} />
@@ -207,7 +203,6 @@ export default function page() {
           )}
         </>
       )}
-      
     </>
   );
 }

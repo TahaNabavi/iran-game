@@ -1,7 +1,7 @@
 "use server";
 
-import { verifyJwt } from "../global/jwt";
-import prisma from "../global/prisma";
+import { verifyJwt } from "@comp-global/jwt";
+import prisma from "@prisma";
 
 export async function getUserData(token: string) {
   if (!token) return { status: 401 };

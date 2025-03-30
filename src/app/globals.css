@@ -262,9 +262,6 @@
 
 @media (max-width: 600px) {
   main {
-    .mRight {
-      padding: 10px !important;
-    }
     .mLeft {
       opacity: 0;
       z-index: -1;
@@ -624,22 +621,6 @@ main {
   }
 }
 
-.left-shadow {
-  position: relative;
-  display: flex;
-  align-items: center;
-
-  &::before {
-    content: "";
-    height: 60%;
-    border-radius: 50px;
-    width: 4px;
-    background: #3abef9;
-    box-shadow: 2px 0 4px #3abef9;
-    position: absolute;
-    left: -15px;
-  }
-}
 .animated-text-shadow {
   .sh-item {
     transition: 0.3s ease-out;

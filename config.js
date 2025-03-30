@@ -22,3 +22,7 @@ export const marketSearchPlaceHolders = [
     "Assassin's Creed Valhalla"
 ]
 export const GOOGLE_CLIENT_ID = ""
+export const WEBSITE_DIR = "rtl"
+export const WEBSITE_LANG = "fa"
+export const WEBSITE_DOMIN = "https://iran-game-fa.tahanabavi.ir"
+export const WEBSITE_LOCALE = "fa-ir"

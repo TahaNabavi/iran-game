@@ -9,6 +9,13 @@ datasource db {
 
 model setting {
   id Int @id @default(autoincrement())
+  website_name String @default("")
+  title String @default("")
+  title_tempalte String @default("")
+  description String @default("")
+  keywords String @default("")
+  logo String @default("")
+  banner String @default("")
 
   add_price_market Float
 }
